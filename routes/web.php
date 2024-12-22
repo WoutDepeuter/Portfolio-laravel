@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-oute::get('/home', function(){
+Route::get('/home', function(){
     return view('home');
 })->name('home');
 
