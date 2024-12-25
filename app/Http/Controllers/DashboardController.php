@@ -17,4 +17,25 @@ class DashboardController extends Controller
 
         return view('dashboard', ['users' => $users]);
     }
+    public function promoteToAdmin($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->role = 'admin';
+            $user->save();
+        }
+
+        return redirect()->route('dashboard');
+    }
+    public function demoteToUser($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->role = 'user';
+            $user->save();
+        }
+
+        return redirect()->route('dashboard');
+    }
 }
+
