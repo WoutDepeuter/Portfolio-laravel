@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         $users = [];
         if (Auth::user()->role === 'admin') {
-            $users = User::all();
+            $users = User::where('id', '!=', Auth::id())->get();
         }
 
         return view('dashboard', ['users' => $users]);
@@ -33,6 +33,15 @@ class DashboardController extends Controller
         if ($user) {
             $user->role = 'user';
             $user->save();
+        }
+
+        return redirect()->route('dashboard');
+    }
+    public function removeAccount($id)
+    {
+        $user = User::find($id);
+        if ($user) {
+            $user->delete();
         }
 
         return redirect()->route('dashboard');
