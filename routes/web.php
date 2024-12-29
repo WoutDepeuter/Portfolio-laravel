@@ -3,8 +3,6 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FAQController;
-
-
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -25,4 +23,9 @@ Route::get('/home', function(){
     return view('home');
 })->name('home');
 
-Route::get('/faqs', [FAQController::class, 'index'])->name('faqs.index');require __DIR__.'/auth.php';
+Route::get('/faqs', [FAQController::class, 'index'])->name('faqs.index');
+Route::post('/faqs', [FAQController::class, 'create'])->name('faqs.create');
+Route::post('/categories', [FAQController::class, 'storeCategory'])->name('categories.store');
+Route::post('/faqs/store', [FAQController::class, 'storeFaq'])->name('faqs.store');
+
+require __DIR__.'/auth.php';
