@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FAQController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,4 +29,5 @@ Route::post('/faqs', [FAQController::class, 'create'])->name('faqs.create');
 Route::post('/categories', [FAQController::class, 'storeCategory'])->name('categories.store');
 Route::post('/faqs/store', [FAQController::class, 'storeFaq'])->name('faqs.store');
 
+Route::get('/profile/{id}', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');
 require __DIR__.'/auth.php';
