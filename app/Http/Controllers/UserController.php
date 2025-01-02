@@ -12,4 +12,14 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         return view('profile.Profile', compact('user'));
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+        $users = User::where('name', 'LIKE', "%{$query}%")
+            ->orWhere('email', 'LIKE', "%{$query}%")
+            ->get();
+
+        return view('home', compact('users', 'query'));
+    }
 }

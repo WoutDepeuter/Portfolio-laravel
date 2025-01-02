@@ -28,7 +28,8 @@
                 <h3 class="text-lg font-medium text-gray-900">Search Results:</h3>
                 <ul class="mt-2">
                     @forelse($users as $user)
-                    <li class="py-2 border-b border-gray-200">
+                    <li class="py-2 border-b border-gray-200 flex items-center">
+                        <img src="{{ $user->profile_picture_url }}" alt="{{ $user->name }}'s profile picture" class="w-10 h-10 rounded-full mr-4">
                         <a href="{{ url('/profile/' . $user->id) }}" class="text-indigo-600 hover:text-indigo-900">
                             {{ $user->name }} ({{ $user->email }})
                         </a>
