@@ -24,18 +24,66 @@ class ProfileController extends Controller
     /**
      * Update the user's profile information.
      */
-    public function update(ProfileUpdateRequest $request): RedirectResponse
+    public function update(Request $request)
     {
-        $request->user()->fill($request->validated());
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255',
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
 
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
+        $user = Auth::user();
+
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/profile_pictures'), $filename);
+            $user->profile_picture = $filename;
         }
 
-        $request->user()->save();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
 
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        return redirect()->route('profile.edit')->with('status', 'Profile updated!');
     }
+
+    /**
+     * Update the user's profile picture.
+     */
+    public function updatePicture(Request $request)
+    {
+        $request->validate([
+            'profile_picture' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $user = Auth::user();
+
+        if ($request->hasFile('profile_picture')) {
+            $file = $request->file('profile_picture');
+            $filename = time() . '.' . $file->getClientOriginalExtension();
+            $file->move(public_path('images/profile_pictures'), $filename);
+            $user->profile_picture = $filename;
+        }
+
+        $user->save();
+
+        return redirect()->route('profile.edit')->with('status', 'Profile picture updated!');
+    }
+
+    public function updateAbout(Request $request)
+    {
+        $request->validate([
+            'about_me' => 'nullable|string|max:1000',
+        ]);
+
+        $user = Auth::user();
+        $user->about_me = $request->about_me;
+        $user->save();
+
+        return redirect()->route('profile.edit')->with('status', 'About Me updated!');
+    }
+
 
     /**
      * Delete the user's account.
