@@ -10,12 +10,12 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        $users = [];
-        if (Auth::user()->role === 'admin') {
-            $users = User::where('id', '!=', Auth::id())->get();
+        if (Auth::user()->role !== 'admin') {
+            return redirect()->route('profile.show', ['id' => Auth::user()->id]);
         }
 
-        return view('dashboard', ['users' => $users]);
+        $users = User::all();
+        return view('dashboard', compact('users'));
     }
     public function promoteToAdmin($id)
     {

@@ -1,4 +1,6 @@
 <!-- resources/views/profile/partials/update-about-me-form.blade.php -->
+<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
 <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
     <div class="max-w-xl">
         <form method="POST" action="{{ route('profile.update.about') }}">
@@ -16,10 +18,7 @@
 
             <!-- Save Button -->
             <div>
-                <button type="submit"
-                        class="inline-flex items-center px-4 py-2 bg-indigo-600 border border-transparent rounded-md font-semibold text-xs text-white uppercase tracking-widest hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
-                    {{ __('Save About Me') }}
-                </button>
+                <x-primary-button>{{ __('Save') }}</x-primary-button>
             </div>
         </form>
     </div>

@@ -7,10 +7,10 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
-Route::post('/dashboard/promote/{id}', [DashboardController::class, 'promoteToAdmin'])->middleware(['auth'])->name('dashboard.promote');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+Route::post('/dashboard/promote/{id}', [DashboardController::class, 'promoteToAdmin'])->middleware(['auth'])->name('dashboard.promote');
 Route::post('/dashboard/demote/{id}', [DashboardController::class, 'demoteToUser'])->middleware(['auth'])->name('dashboard.demote');
 Route::post('/dashboard/remove/{id}', [DashboardController::class, 'removeAccount'])->middleware(['auth'])->name('dashboard.remove');
 
