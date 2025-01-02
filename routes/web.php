@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('home');
 });
+Route::get('/search', [UserController::class, 'search'])->name('user.search');
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 Route::post('/dashboard/promote/{id}', [DashboardController::class, 'promoteToAdmin'])->middleware(['auth'])->name('dashboard.promote');
 Route::post('/dashboard/demote/{id}', [DashboardController::class, 'demoteToUser'])->middleware(['auth'])->name('dashboard.demote');
@@ -32,5 +33,4 @@ Route::post('/faqs', [FAQController::class, 'create'])->name('faqs.create');
 Route::post('/categories', [FAQController::class, 'storeCategory'])->name('categories.store');
 Route::post('/faqs/store', [FAQController::class, 'storeFaq'])->name('faqs.store');
 
-Route::get('/profile/{id}', [UserController::class, 'show'])->middleware(['auth'])->name('profile.show');
-require __DIR__.'/auth.php';
+Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show');require __DIR__.'/auth.php';
