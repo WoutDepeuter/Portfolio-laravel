@@ -2,7 +2,7 @@
 <nav class="bg-gray-800 p-4">
     <div class="container mx-auto flex justify-between items-center">
         <div class="text-white text-lg font-bold">
-            <a href="/home">placeholder</a>
+            <a href="/home">Foilhat</a>
         </div>
         <div class="flex items-center space-x-6"> <!-- This ensures the items are in a row with space between them -->
             <a href="/faqs" class="text-gray-300 hover:text-white flex items-center space-x-2">
