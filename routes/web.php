@@ -34,3 +34,4 @@ Route::post('/categories', [FAQController::class, 'storeCategory'])->name('categ
 Route::post('/faqs/store', [FAQController::class, 'storeFaq'])->name('faqs.store');
 
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show');require __DIR__.'/auth.php';
+
