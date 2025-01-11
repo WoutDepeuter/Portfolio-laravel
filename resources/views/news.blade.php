@@ -16,11 +16,13 @@
             @foreach($newsArticles as $article)
             <div class="mb-4">
                 <h2 class="text-2xl font-bold">{{ $article->title }}</h2>
+                @if($article->image_path)
                 <img src="{{ asset('storage/' . $article->image_path) }}" alt="{{ $article->title }}" class="w-full h-auto mt-2">
+                @endif
                 <p class="mt-2">{{ $article->content }}</p>
                 <p class="text-sm text-gray-500 mt-2">Published on: {{ $article->published_at->format('M d, Y') }}</p>
                 <button onclick="document.getElementById('edit-form-{{ $article->id }}').classList.toggle('hidden')" class="bg-blue-500 text-white px-4 py-2 rounded mt-2">Edit</button>
-                <form id="edit-form-{{ $article->id }}" action="{{ route('news.update', $article->id) }}" method="POST" class="hidden mt-4">
+                <form id="edit-form-{{ $article->id }}" action="{{ route('news.update', $article->id) }}" method="POST" enctype="multipart/form-data" class="hidden mt-4">
                     @csrf
                     @method('PATCH')
                     <div class="mb-4">
@@ -32,8 +34,8 @@
                         <textarea name="content" id="content" class="mt-1 block w-full">{{ $article->content }}</textarea>
                     </div>
                     <div class="mb-4">
-                        <label for="image_path" class="block text-sm font-medium text-gray-700">Image Path</label>
-                        <input type="text" name="image_path" id="image_path" value="{{ $article->image_path }}" class="mt-1 block w-full">
+                        <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
+                        <input type="file" name="image" id="image" class="mt-1 block w-full">
                     </div>
                     <div class="mb-4">
                         <label for="published_at" class="block text-sm font-medium text-gray-700">Published At</label>
