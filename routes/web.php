@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\FAQController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,5 +34,8 @@ Route::post('/faqs', [FAQController::class, 'create'])->name('faqs.create');
 Route::post('/categories', [FAQController::class, 'storeCategory'])->name('categories.store');
 Route::post('/faqs/store', [FAQController::class, 'storeFaq'])->name('faqs.store');
 
+Route::get('/news', [NewsController::class, 'index'])->name('news.index');
+Route::get('/news/{id}/edit', [NewsController::class, 'edit'])->name('news.edit');
+Route::patch('/news/{id}', [NewsController::class, 'update'])->name('news.update');
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show');require __DIR__.'/auth.php';
 
