@@ -15,7 +15,7 @@
         <div class="p-6 bg-white border-b border-gray-200">
             @if (Auth::check() && Auth::user()->role === 'admin')
             <div class="flex justify-end mb-4">
-                <a href="{{ route('news.create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Create News</a>
+                <a href="{{ route('create') }}" class="bg-blue-500 text-white px-4 py-2 rounded">Create News</a>
             </div>
             @endif
             @foreach($newsArticles as $article)

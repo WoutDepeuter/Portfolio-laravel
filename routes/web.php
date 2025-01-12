@@ -6,6 +6,9 @@ use App\Http\Controllers\FAQController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
+
+
 
 Route::get('/', function () {
     return view('home');
@@ -41,4 +44,6 @@ Route::delete('/news/{id}', [NewsController::class, 'destroy'])->name('news.dest
 Route::get('/news/create', [NewsController::class, 'create'])->name('create');
 Route::post('/news', [NewsController::class, 'store'])->name('news.store');
 Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show');require __DIR__.'/auth.php';
-
+Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');Route::get('/contact', function () {
+    return view('Contact');
+})->name('contact.page');
