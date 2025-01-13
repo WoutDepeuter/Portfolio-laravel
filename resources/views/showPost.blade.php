@@ -25,6 +25,7 @@
             </div>
             @endforeach
 
+            @auth
             <form method="POST" action="{{ route('forum.comment.store', $post->id) }}">
                 @csrf
                 <div class="mb-4">
@@ -35,6 +36,13 @@
                     <button type="submit" class="px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">Submit</button>
                 </div>
             </form>
+            @endauth
+
+            @guest
+            <div class="text-center mt-4">
+                <p class="text-gray-700">Please <a href="{{ route('login') }}" class="text-indigo-600 hover:underline">log in</a> to comment.</p>
+            </div>
+            @endguest
         </div>
     </div>
 </div>
