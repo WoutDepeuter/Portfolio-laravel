@@ -7,6 +7,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\NewsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ForumController;
 
 
 
@@ -47,3 +48,9 @@ Route::get('/profile/{id}', [UserController::class, 'show'])->name('profile.show
 Route::post('/contact/send', [\App\Http\Controllers\ContactController::class, 'send'])->name('contact.send');Route::get('/contact', function () {
     return view('Contact');
 })->name('contact.page');
+
+Route::get('/forum', [ForumController::class, 'index'])->name('forum.index');
+Route::get('/forum/create', [ForumController::class, 'create'])->name('forum.create');
+Route::post('/forum', [ForumController::class, 'store'])->name('forum.store');
+Route::get('/forum/{id}', [ForumController::class, 'show'])->name('forum.show');
+Route::post('/forum/{id}/comment', [ForumController::class, 'storeComment'])->name('forum.comment.store');
