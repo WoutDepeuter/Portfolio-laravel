@@ -74,4 +74,3 @@ Contributions are welcome. Feel free to submit a pull request or open an issue f
 This project is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 ```
 
-Would you like any further modifications or additional details?
