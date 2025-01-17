@@ -1,6 +1,7 @@
+
 # Portfolio Laravel
 
-Welcome to my portfolio built with Laravel! This project highlights my work and showcases my skills as a developer through various features and functionalities.
+Welcome to my portfolio built with Laravel! This project highlights my work and showcases my skills as a developer through various features and functionalities its a type of forum for developers
 
 ## Features
 
@@ -10,7 +11,8 @@ Welcome to my portfolio built with Laravel! This project highlights my work and 
 - **Admin Dashboard:** A comprehensive interface for administrative tasks and website management.
 - **News Channel:** A dedicated section for the latest updates and news.
 - **Profile Pages:** Detailed pages for users to display their information and achievements.
-- **FAQ PAGES** Detailed page with QUESTIONS AND ANSWERS
+- **FAQ Pages:** A detailed page with questions and answers.
+
 ## Setup Instructions
 
 1. **Clone the repository:**
@@ -48,10 +50,11 @@ Welcome to my portfolio built with Laravel! This project highlights my work and 
    ```sh
    php artisan db:seed
    ```
-   **build the project**
+
+8. **Build the project:**
    ```sh
-    npm run build
-   ```****
+   npm run build
+   ```
 
 9. **Start the development server:**
    ```sh
@@ -72,5 +75,8 @@ Contributions are welcome. Feel free to submit a pull request or open an issue f
 ## License
 
 This project is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
-```
 
+## Used Resources
+
+- **Canvas Course**
+```
