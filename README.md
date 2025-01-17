@@ -48,8 +48,12 @@ Welcome to my portfolio built with Laravel! This project highlights my work and 
    ```sh
    php artisan db:seed
    ```
+   **build the project**
+   ```sh
+    npm run build
+   ```****
 
-8. **Start the development server:**
+9. **Start the development server:**
    ```sh
    php artisan serve
    ```
