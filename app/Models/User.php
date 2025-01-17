@@ -28,6 +28,11 @@ class User extends Authenticatable
         'role',
     ];
 
+    public function forumPosts()
+    {
+        return $this->hasMany(ForumPost::class);
+    }
+
     /**
      * The attributes that should be hidden for serialization.
      *

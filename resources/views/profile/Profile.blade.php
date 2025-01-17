@@ -21,6 +21,33 @@
                     <p class="mb-8"><strong class="font-bold">Email:</strong> {{ $user->email }}</p>
                     <p class="mb-8"><strong class="font-bold">Role:</strong> {{ $user->role }}</p>
                     <a href="{{ url('/') }}" class="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">Home</a>
+
+                    <div class="mt-8">
+                        <h3 class="text-xl font-bold mb-4">Forum Posts</h3>
+                        @forelse($user->forumPosts as $post)
+                        <div class="mb-4 p-4 bg-white rounded shadow">
+                            <h4 class="text-lg font-semibold">
+                                <a href="{{ route('forum.show', $post->id) }}" class="text-blue-500 hover:underline">{{ $post->title }}</a>
+                                <span class="text-sm text-gray-500">({{ $post->comments->count() }} comments)</span>
+                            </h4>
+                            <p class="text-sm text-gray-500">Posted by {{ $post->user->name }} on {{ $post->created_at->format('M d, Y') }}</p>
+                            <p class="text-gray-600">{{ $post->content }}</p>
+                            <div class="mt-4">
+                                <h5 class="font-semibold">Comments:</h5>
+                                @forelse($post->comments as $comment)
+                                <div class="mt-2 p-2 bg-gray-100 rounded">
+                                    <p class="text-sm text-gray-500">{{ $comment->user->name }} on {{ $comment->created_at->format('M d, Y') }}</p>
+                                    <p>{{ $comment->content }}</p>
+                                </div>
+                                @empty
+                                <p>No comments found.</p>
+                                @endforelse
+                            </div>
+                        </div>
+                        @empty
+                        <p>No forum posts found.</p>
+                        @endforelse
+                    </div>
                 </div>
             </div>
         </div>

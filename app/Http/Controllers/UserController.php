@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    public function Show($id)
+    public function show($id)
     {
-        $user = User::findOrFail($id);
+        $user = User::with('forumPosts')->findOrFail($id);
         return view('profile.Profile', compact('user'));
     }
 
