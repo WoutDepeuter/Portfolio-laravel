@@ -20,7 +20,7 @@
                     <p class="mb-8"><strong class="font-bold">Birthday:</strong> {{ $user->birthday }}</p>
                     <p class="mb-8"><strong class="font-bold">Email:</strong> {{ $user->email }}</p>
                     <p class="mb-8"><strong class="font-bold">Role:</strong> {{ $user->role }}</p>
-                </div>
+                    <a href="{{ url('/') }}" class="inline-block bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700">Home</a>
                 </div>
             </div>
         </div>
